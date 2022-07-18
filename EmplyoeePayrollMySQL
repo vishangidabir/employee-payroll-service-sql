@@ -78,3 +78,32 @@ mysql>  SELECT * FROM employee_payroll;
 |  3 | Akshu | 3000000 | 2020-05-21 |
 +----+-------+---------+------------+
 3 rows in set (0.01 sec)
+
+--------------------------------------------------------------
+UC5-->Ability to retrieve salary data for particular employee
+---------------------------------------------------------------
+
+mysql> select salary from employee_payroll where name = 'Vishu';
++---------+
+| salary  |
++---------+
+| 1000000 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select * from employee_payroll where start between cast('2019-01-01' as date) and date (now());
++----+-------+---------+------------+
+| id | name  | salary  | start      |
++----+-------+---------+------------+
+|  2 | Ashu  | 2000000 | 2019-11-13 |
+|  3 | Akshu | 3000000 | 2020-05-21 |
++----+-------+---------+------------+
+2 rows in set (0.00 sec)
+
+mysql>  select * from employee_payroll where start between cast('2020-01-01' as date) and date (now());
++----+-------+---------+------------+
+| id | name  | salary  | start      |
++----+-------+---------+------------+
+|  3 | Akshu | 3000000 | 2020-05-21 |
++----+-------+---------+------------+
+1 row in set (0.00 sec)
