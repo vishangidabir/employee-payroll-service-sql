@@ -107,3 +107,41 @@ mysql>  select * from employee_payroll where start between cast('2020-01-01' as 
 |  3 | Akshu | 3000000 | 2020-05-21 |
 +----+-------+---------+------------+
 1 row in set (0.00 sec)
+
+-----------------------------------------------------------------------
+UC6-->Ability to add gender to employee
+------------------------------------------------------------------------
+
+mysql> alter table employee_payroll add gender char(1) after name;
+Query OK, 3 rows affected (0.05 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> describe employee_payroll;
++--------+------------------+------+-----+---------+----------------+
+| Field  | Type             | Null | Key | Default | Extra          |
++--------+------------------+------+-----+---------+----------------+
+| id     | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
+| name   | varchar(150)     | NO   |     | NULL    |                |
+| gender | char(1)          | YES  |     | NULL    |                |
+| salary | double           | NO   |     | NULL    |                |
+| start  | date             | NO   |     | NULL    |                |
++--------+------------------+------+-----+---------+----------------+
+5 rows in set (0.01 sec)
+
+mysql> update employee_payroll set gender ='F' where name ='Vishu' or name='Ashu';
+Query OK, 2 rows affected (0.01 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> update employee_payroll set gender ='F' where name ='Akshu';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee_payroll;
++----+-------+--------+---------+------------+
+| id | name  | gender | salary  | start      |
++----+-------+--------+---------+------------+
+|  1 | Vishu | F      | 1000000 | 2018-01-03 |
+|  2 | Ashu  | F      | 2000000 | 2019-11-13 |
+|  3 | Akshu | F      | 3000000 | 2020-05-21 |
++----+-------+--------+---------+------------+
+3 rows in set (0.00 sec)
