@@ -145,3 +145,47 @@ mysql> select * from employee_payroll;
 |  3 | Akshu | F      | 3000000 | 2020-05-21 |
 +----+-------+--------+---------+------------+
 3 rows in set (0.00 sec)
+
+-------------------------------------------------------------------
+UC7-->Ability to find sum,avg,min,max and number of females
+-------------------------------------------------------------------
+
+mysql> select sum(salary) from employee_payroll where gender ='F' group by gender;
++-------------+
+| sum(salary) |
++-------------+
+|     6000000 |
++-------------+
+1 row in set (0.01 sec)
+
+mysql>  select avg(salary) from employee_payroll where gender ='F' group by gender;
++-------------+
+| avg(salary) |
++-------------+
+|     2000000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql>  select max(salary) from employee_payroll where gender ='F' group by gender;
++-------------+
+| max(salary) |
++-------------+
+|     3000000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select gender , avg(salary) from employee_payroll group by gender;
++--------+-------------+
+| gender | avg(salary) |
++--------+-------------+
+| F      |     2000000 |
++--------+-------------+
+1 row in set (0.01 sec)
+
+mysql> select gender , count(name) from employee_payroll group by gender;
++--------+-------------+
+| gender | count(name) |
++--------+-------------+
+| F      |           3 |
++--------+-------------+
+1 row in set (0.00 sec)
