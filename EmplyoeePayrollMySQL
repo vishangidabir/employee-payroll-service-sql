@@ -282,3 +282,21 @@ mysql>  describe employee_payroll;
 +-------------+--------------+------+-----+---------+----------------+
 12 rows in set (0.11 sec)
 
+----------------------------------------------------------------------
+UC10-->Ability to make Vishu as part of Sales and Marketing Department
+----------------------------------------------------------------------
+
+mysql> insert into employee_payroll(name,department,gender,Basicpay,deduction,taxablepay,netpay,tax,start)values
+    -> ('Vishu','Sales','F','500000','10000','20000','10000','10000','2019-05-23');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from employee_payroll where name ='Vishu';
++----+-------+-------------+---------+------------+--------+----------+-----------+------------+--------+-------+------------+
+| id | name  | phoneNumber | address | department | gender | BasicPay | Deduction | TaxablePay | NetPay | Tax   | start      |
++----+-------+-------------+---------+------------+--------+----------+-----------+------------+--------+-------+------------+
+|  1 | Vishu | NULL        | ATP     |            | F      |  1000000 |         0 |          0 |      0 |     0 | 2018-01-03 |
+|  4 | Vishu | NULL        | ATP     | Sales      | F      |   500000 |     10000 |      20000 |  10000 | 10000 | 2019-05-23 |
++----+-------+-------------+---------+------------+--------+----------+-----------+------------+--------+-------+------------+
+2 rows in set (0.01 sec)
+
+
